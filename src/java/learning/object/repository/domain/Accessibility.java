@@ -49,8 +49,7 @@ import javax.persistence.Table;
     @NamedQuery(name = "Accessibility.findByReducedReadingLevel", query = "SELECT a FROM Accessibility a WHERE a.reducedReadingLevel = :reducedReadingLevel"),
     @NamedQuery(name = "Accessibility.findByReducedSpeed", query = "SELECT a FROM Accessibility a WHERE a.reducedSpeed = :reducedSpeed"),
     @NamedQuery(name = "Accessibility.findByUseMaximumContrastMonochrome", query = "SELECT a FROM Accessibility a WHERE a.useMaximumContrastMonochrome = :useMaximumContrastMonochrome"),
-    @NamedQuery(name = "Accessibility.findByVerbatim", query = "SELECT a FROM Accessibility a WHERE a.verbatim = :verbatim"),
-    @NamedQuery(name = "Accessibility.findByAccessibilitycol", query = "SELECT a FROM Accessibility a WHERE a.accessibilitycol = :accessibilitycol")})
+    @NamedQuery(name = "Accessibility.findByVerbatim", query = "SELECT a FROM Accessibility a WHERE a.verbatim = :verbatim")})
 public class Accessibility implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -121,8 +120,6 @@ public class Accessibility implements Serializable {
     @Basic(optional = false)
     @Column(name = "VERBATIM")
     private short verbatim;
-    @Column(name = "accessibilitycol")
-    private String accessibilitycol;
     @JoinColumn(name = "IDENTIFIER_ID", referencedColumnName = "ID")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Identifier identifierId;
@@ -339,14 +336,6 @@ public class Accessibility implements Serializable {
 
     public void setVerbatim(short verbatim) {
         this.verbatim = verbatim;
-    }
-
-    public String getAccessibilitycol() {
-        return accessibilitycol;
-    }
-
-    public void setAccessibilitycol(String accessibilitycol) {
-        this.accessibilitycol = accessibilitycol;
     }
 
     public Identifier getIdentifierId() {
