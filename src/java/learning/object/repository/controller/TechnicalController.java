@@ -9,8 +9,11 @@ import java.util.List;
 import learning.object.repository.domain.Technical;
 import learning.object.repository.interfaces.CRUD;
 import learning.object.repository.util.HibernateUtil;
+import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.Session;
+import org.hibernate.criterion.Restrictions;
 
 /**
  *
@@ -22,11 +25,13 @@ public class TechnicalController implements CRUD<Technical> {
 
     @Override
     public void save(Technical object) {
-        if (object == null)
+        if (object == null) {
             throw new NullPointerException("O objeto " + Technical.class.getSimpleName() + " não pode ser nulo.");
+        }
 
-        if (object.getPlatformType() == null)
+        if (object.getPlatformType() == null) {
             throw new NullPointerException();
+        }
 
         try {
             session = HibernateUtil.getSessionFactory().openSession();
@@ -42,7 +47,10 @@ public class TechnicalController implements CRUD<Technical> {
 
     @Override
     public void delete(Technical object) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (object == null) {
+            throw new NullPointerException("O objeto " + Technical.class.getSimpleName() + " não pode ser nulo.");
+        }
+
     }
 
     @Override
@@ -52,7 +60,18 @@ public class TechnicalController implements CRUD<Technical> {
 
     @Override
     public Technical find(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Technical technical = new Technical();
+        try {
+            session = HibernateUtil.getSessionFactory().openSession();
+            session.beginTransaction().begin();
+            Criteria query = session.createCriteria(Technical.class);
+            query.add(Restrictions.eq("id", id));
+            technical = (Technical) query.uniqueResult();
+            session.beginTransaction().commit();
+        } catch (HibernateException ex) {
+            throw new HibernateException(ex);
+        }
+        return technical;
     }
 
     @Override

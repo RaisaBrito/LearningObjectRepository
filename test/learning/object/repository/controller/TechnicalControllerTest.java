@@ -6,6 +6,7 @@
 package learning.object.repository.controller;
 
 import java.util.List;
+import learning.object.repository.domain.Accessibility;
 import learning.object.repository.domain.Technical;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -84,13 +85,20 @@ public class TechnicalControllerTest {
     @Test
     public void testFind() {
         System.out.println("find");
-        int id = 0;
+        int id = 2;
         TechnicalController instance = new TechnicalController();
-        Technical expResult = null;
+        Technical expResult = new Technical(2);
+        expResult.setEssential((short) 1);
+        expResult.setPlatformType("MOVEL");
+
         Technical result = instance.find(id);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+
+        if (result.getAccessibilityCollection() != null) {
+            for (Accessibility accessibility : result.getAccessibilityCollection()) {
+                System.out.println("ID: " + accessibility.getId());
+            }
+        }
     }
 
     /**
