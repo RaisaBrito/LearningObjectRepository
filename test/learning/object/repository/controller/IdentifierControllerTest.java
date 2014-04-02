@@ -1,10 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package learning.object.repository.controller;
 
+import learning.object.repository.repository.IdentifierRepository;
 import java.util.List;
 import learning.object.repository.domain.Identifier;
 import org.junit.After;
@@ -40,7 +36,7 @@ public class IdentifierControllerTest {
     }
 
     /**
-     * Test of save method, of class IdentifierController.
+     * Test of save method, of class IdentifierRepository.
      */
     @Test
     public void testSave() {
@@ -48,44 +44,44 @@ public class IdentifierControllerTest {
         Identifier object = new Identifier();
         object.setCatalog("CAT90");
         object.setEntry("109");
-        IdentifierController instance = new IdentifierController();
+        IdentifierRepository instance = new IdentifierRepository();
         instance.save(object);
     }
 
     /**
-     * Test of delete method, of class IdentifierController.
+     * Test of delete method, of class IdentifierRepository.
      */
     @Test
     public void testDelete() {
         System.out.println("delete");
         Identifier object = null;
-        IdentifierController instance = new IdentifierController();
+        IdentifierRepository instance = new IdentifierRepository();
         instance.delete(object);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
 
     /**
-     * Test of update method, of class IdentifierController.
+     * Test of update method, of class IdentifierRepository.
      */
     @Test
     public void testUpdate() {
         System.out.println("update");
         Identifier object = null;
-        IdentifierController instance = new IdentifierController();
+        IdentifierRepository instance = new IdentifierRepository();
         instance.update(object);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
 
     /**
-     * Test of find method, of class IdentifierController.
+     * Test of find method, of class IdentifierRepository.
      */
     @Test
     public void testFind() {
         System.out.println("find");
         int id = 0;
-        IdentifierController instance = new IdentifierController();
+        IdentifierRepository instance = new IdentifierRepository();
         Identifier expResult = null;
         Identifier result = instance.find(id);
         assertEquals(expResult, result);
@@ -94,12 +90,12 @@ public class IdentifierControllerTest {
     }
 
     /**
-     * Test of all method, of class IdentifierController.
+     * Test of all method, of class IdentifierRepository.
      */
     @Test
     public void testAll() {
         System.out.println("all");
-        IdentifierController instance = new IdentifierController();
+        IdentifierRepository instance = new IdentifierRepository();
         List<Identifier> expResult = null;
         List<Identifier> result = instance.all();
         assertEquals(expResult, result);

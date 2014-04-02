@@ -1,11 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package learning.object.repository.controller;
 
+import learning.object.repository.repository.TechnicalRepository;
+import learning.object.repository.repository.IdentifierRepository;
+import learning.object.repository.repository.AccessibilityRepository;
+import learning.object.repository.repository.GeneralRepository;
 import learning.object.repository.domain.Accessibility;
 import learning.object.repository.domain.General;
 import learning.object.repository.domain.Identifier;
@@ -46,7 +44,7 @@ public class AcceccibilityControllerTest {
     }
 
     /**
-     * Test of save method, of class AccessibilityController.
+     * Test of save method, of class AccessibilityRepository.
      */
     @Test
     public void testSave() {
@@ -77,25 +75,25 @@ public class AcceccibilityControllerTest {
         General general = new General();
         general.setTitle("Teste Title");
         general.setLanguage("US");
-        GeneralController generalController = new GeneralController();
+        GeneralRepository generalController = new GeneralRepository();
         generalController.save(general);
         
         Identifier identifier = new Identifier();
         identifier.setCatalog("CTA122");
         identifier.setEntry("C11");
-        IdentifierController identifierController = new IdentifierController();
+        IdentifierRepository identifierController = new IdentifierRepository();
         identifierController.save(identifier);
         
         Technical technical = new Technical();
         technical.setEssential(FALSE);
         technical.setPlatformType("FIXO");
-        TechnicalController technicalController = new TechnicalController();
+        TechnicalRepository technicalController = new TechnicalRepository();
         technicalController.save(technical);
         
         object.setGeneralId(general);
         object.setIdentifierId(identifier);
         object.setTechnicalId(technical);
-        AccessibilityController instance = new AccessibilityController();        
+        AccessibilityRepository instance = new AccessibilityRepository();        
         instance.save(object);
     }
     
