@@ -1,11 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package learning.object.repository.controller;
 
+import learning.object.repository.repository.GeneralRepository;
 import java.util.List;
 import learning.object.repository.domain.General;
 import org.junit.After;
@@ -41,7 +36,7 @@ public class GeneralControllerTest {
     }
 
     /**
-     * Test of save method, of class GeneralController.
+     * Test of save method, of class GeneralRepository.
      */
     @Test
     public void testSave() {
@@ -49,44 +44,44 @@ public class GeneralControllerTest {
         General object = new General();
         object.setTitle("Titulo obrigatorio");
         object.setLanguage("PT-BR");
-        GeneralController instance = new GeneralController();
+        GeneralRepository instance = new GeneralRepository();
         instance.save(object);
     }
 
     /**
-     * Test of delete method, of class GeneralController.
+     * Test of delete method, of class GeneralRepository.
      */
     @Test
     public void testDelete() {
         System.out.println("delete");
         General object = null;
-        GeneralController instance = new GeneralController();
+        GeneralRepository instance = new GeneralRepository();
         instance.delete(object);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
 
     /**
-     * Test of update method, of class GeneralController.
+     * Test of update method, of class GeneralRepository.
      */
     @Test
     public void testUpdate() {
         System.out.println("update");
         General object = null;
-        GeneralController instance = new GeneralController();
+        GeneralRepository instance = new GeneralRepository();
         instance.update(object);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
 
     /**
-     * Test of find method, of class GeneralController.
+     * Test of find method, of class GeneralRepository.
      */
     @Test
     public void testFind() {
         System.out.println("find");
         int id = 0;
-        GeneralController instance = new GeneralController();
+        GeneralRepository instance = new GeneralRepository();
         General expResult = null;
         General result = instance.find(id);
         assertEquals(expResult, result);
@@ -95,12 +90,12 @@ public class GeneralControllerTest {
     }
 
     /**
-     * Test of all method, of class GeneralController.
+     * Test of all method, of class GeneralRepository.
      */
     @Test
     public void testAll() {
         System.out.println("all");
-        GeneralController instance = new GeneralController();
+        GeneralRepository instance = new GeneralRepository();
         List<General> expResult = null;
         List<General> result = instance.all();
         assertEquals(expResult, result);

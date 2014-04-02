@@ -1,17 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package learning.object.repository.controller;
+package learning.object.repository.repository;
 
+import java.util.ArrayList;
 import java.util.List;
 import learning.object.repository.domain.Technical;
 import learning.object.repository.interfaces.CRUD;
+import learning.object.repository.interfaces.Closeable;
 import learning.object.repository.util.HibernateUtil;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
-import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
 
@@ -19,9 +15,13 @@ import org.hibernate.criterion.Restrictions;
  *
  * @author Rogério Pimentel <rgercp@mail.com>
  */
-public class TechnicalController implements CRUD<Technical> {
+public class TechnicalRepository implements CRUD<Technical>, Closeable {
 
     private Session session;
+    
+    public TechnicalRepository() {
+        session = HibernateUtil.getSessionFactory().openSession();
+    }
 
     @Override
     public void save(Technical object) {
@@ -34,14 +34,12 @@ public class TechnicalController implements CRUD<Technical> {
         }
 
         try {
-            session = HibernateUtil.getSessionFactory().openSession();
+            //session = HibernateUtil.getSessionFactory().getCurrentSession();
             session.beginTransaction().begin();
             session.save(object);
             session.beginTransaction().commit();
         } catch (HibernateException ex) {
             throw new HibernateException(ex);
-        } finally {
-            session.close();
         }
     }
 
@@ -50,19 +48,38 @@ public class TechnicalController implements CRUD<Technical> {
         if (object == null) {
             throw new NullPointerException("O objeto " + Technical.class.getSimpleName() + " não pode ser nulo.");
         }
-
+        
+        try {
+            //session = HibernateUtil.getSessionFactory().getCurrentSession();
+            session.beginTransaction().begin();
+            session.delete(object);
+            session.beginTransaction().commit();
+        } catch (HibernateException ex) {
+            throw new HibernateException(ex);
+        }
     }
 
     @Override
     public void update(Technical object) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (object == null) {
+            throw new NullPointerException("O objeto " + Technical.class.getSimpleName() + " não pode ser nulo.");
+        }
+        
+        try {
+            //session = HibernateUtil.getSessionFactory().getCurrentSession();
+            session.beginTransaction().begin();
+            session.update(object);
+            session.beginTransaction().commit();
+        } catch (HibernateException ex) {
+            throw new HibernateException(ex);
+        }
     }
 
     @Override
     public Technical find(int id) {
         Technical technical = new Technical();
         try {
-            session = HibernateUtil.getSessionFactory().openSession();
+            //session = HibernateUtil.getSessionFactory().getCurrentSession();
             session.beginTransaction().begin();
             Criteria query = session.createCriteria(Technical.class);
             query.add(Restrictions.eq("id", id));
@@ -76,7 +93,21 @@ public class TechnicalController implements CRUD<Technical> {
 
     @Override
     public List<Technical> all() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        List<Technical> list = new ArrayList<Technical>();
+        try {
+            //session = HibernateUtil.getSessionFactory().getCurrentSession();
+            session.beginTransaction().begin();
+            Criteria criteria = session.createCriteria(Technical.class);
+            list = criteria.list();
+        } catch (HibernateException ex) {
+            throw new HibernateException(ex);
+        }
+        return list;
+    }
+
+    @Override
+    public void close() {
+        session.close();
     }
 
 }

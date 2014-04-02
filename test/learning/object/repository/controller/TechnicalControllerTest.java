@@ -1,10 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package learning.object.repository.controller;
 
+import learning.object.repository.repository.TechnicalRepository;
 import java.util.List;
 import learning.object.repository.domain.Accessibility;
 import learning.object.repository.domain.Technical;
@@ -41,52 +37,49 @@ public class TechnicalControllerTest {
     }
 
     /**
-     * Test of save method, of class TechnicalController.
+     * Test of save method, of class TechnicalRepository.
      */
     @Test
     public void testSave() {
         Technical object = new Technical();
         object.setEssential((short) 1);
         object.setPlatformType("Movel");
-        TechnicalController instance = new TechnicalController();
+        TechnicalRepository instance = new TechnicalRepository();
         instance.save(object);
         System.out.println("save");
     }
 
     /**
-     * Test of delete method, of class TechnicalController.
+     * Test of delete method, of class TechnicalRepository.
      */
     @Test
     public void testDelete() {
-        System.out.println("delete");
-        Technical object = null;
-        TechnicalController instance = new TechnicalController();
+        System.out.println("delete"); 
+        TechnicalRepository instance = new TechnicalRepository();
+        Technical object = instance.find(7);
         instance.delete(object);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
-     * Test of update method, of class TechnicalController.
+     * Test of update method, of class TechnicalRepository.
      */
     @Test
     public void testUpdate() {
         System.out.println("update");
-        Technical object = null;
-        TechnicalController instance = new TechnicalController();
+        Technical object = new Technical(5);
+        object.setPlatformType("3g");
+        TechnicalRepository instance = new TechnicalRepository();
         instance.update(object);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
-     * Test of find method, of class TechnicalController.
+     * Test of find method, of class TechnicalRepository.
      */
     @Test
     public void testFind() {
         System.out.println("find");
         int id = 2;
-        TechnicalController instance = new TechnicalController();
+        TechnicalRepository instance = new TechnicalRepository();
         Technical expResult = new Technical(2);
         expResult.setEssential((short) 1);
         expResult.setPlatformType("MOVEL");
@@ -102,17 +95,15 @@ public class TechnicalControllerTest {
     }
 
     /**
-     * Test of all method, of class TechnicalController.
+     * Test of all method, of class TechnicalRepository.
      */
     @Test
     public void testAll() {
         System.out.println("all");
-        TechnicalController instance = new TechnicalController();
-        List<Technical> expResult = null;
+        TechnicalRepository instance = new TechnicalRepository();
+        int size = 12;
         List<Technical> result = instance.all();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(size, result.size());
     }
 
 }
