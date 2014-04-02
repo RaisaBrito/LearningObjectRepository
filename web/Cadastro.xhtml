@@ -1,0 +1,111 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Cadastro</title>
+    </h:head>
+    <h:body> 
+        <h2> Cadastro Objetos de Aprendizagem </h2> 
+        <h:form>
+            <p:panelGrid columns ="1"> 
+                <p:panelGrid columns="2"> 
+                    <f:facet name="header"> Geral</f:facet>  
+
+                    <h:outputLabel value="Catálogo" />  
+                    <p:inputText id="catalogo" value="" label="catalogo" size="10"/>  
+
+                    <h:outputLabel value="Título" />  
+                    <p:inputText id="titulo" value="" label="titulo" size="30" />  
+
+                    <h:outputLabel value="Idioma" />  
+                    <p:inputText id="idioma" value="" label="idioma" size="30" />  
+
+                    <h:outputLabel value="Descrição" />  
+                    <p:inputTextarea id ="descricao" rows="6" cols="33" /> 
+
+                    <h:outputLabel value="Palavras-chave" />  
+                    <p:inputText id="palavraschave" value="" label="palavraschave" size="50" />
+
+                    <h:outputLabel value="Formato" />  
+                    <p:selectOneMenu id="formato" >
+                        <f:selectItem itemLabel="PDF" itemValue= "PDF"/>
+                        <f:selectItem itemLabel="DOC" itemValue= "Doc"/>
+                        <f:selectItem itemLabel="ZIP" itemValue= "Zip"/>
+
+                    </p:selectOneMenu> 
+
+                    <h:outputLabel value="Size (Mb)" />  
+                    <p:inputText id="size" value="" label="size" size="5" />
+
+
+
+                    <h:outputText value="Tipo de OA " />
+                    <p:selectOneRadio id="tipoOA" value="">  
+                        <f:selectItem itemLabel="Exercício" itemValue="Exercício" />  
+                        <f:selectItem itemLabel="Teoria" itemValue="Teoria" />  
+                    </p:selectOneRadio>  
+
+                    <h:outputLabel value="Área do Conhecimento" />  
+                    <p:selectOneMenu id="AreaConhecimento" >
+                        <f:selectItem itemLabel="Português" itemValue= "Português"/>
+                        <f:selectItem itemLabel="Matemática" itemValue= "Matemática"/>
+                        <f:selectItem itemLabel="Química" itemValue= "Química"/>
+                        <f:selectItem itemLabel="Física" itemValue= "Física"/>
+                    </p:selectOneMenu> 
+
+                    <h:outputText value="Conexão a Internet " />
+                    <p:selectOneRadio id="conexaointernet" value="">  
+                        <f:selectItem itemLabel="Sim" itemValue="Sim" />  
+                        <f:selectItem itemLabel="Não" itemValue="Não" />  
+                    </p:selectOneRadio>  
+
+                    <h:outputText value="Dispositivo " />
+                    <p:selectOneRadio id="dispositivo" value="">  
+                        <f:selectItem itemLabel="Móvel" itemValue="Móvel" />  
+                        <f:selectItem itemLabel="Fixo" itemValue="Fixo" />  
+                    </p:selectOneRadio> 
+
+                    <h:outputText value="Cego Total/Parcial:" />  
+                    <p:selectManyCheckbox layout="pageDirection">  
+                        <f:selectItem itemLabel="CaptionRate" itemValue="CaptionRate" />  
+                        <f:selectItem itemLabel="EnhancedCaption" itemValue="EnhancedCaption" />  
+                        <f:selectItem itemLabel="HasAuditutory" itemValue="HasAuditutory" />  
+                        <f:selectItem itemLabel="ReducedReading Level" itemValue="ReducedReadingLevel" />  
+                        <f:selectItem itemLabel="Verbatim" itemValue="Verbatim" />  
+                    </p:selectManyCheckbox>
+                    
+                    <h:outputText value="Surdo:" />  
+                    <p:selectManyCheckbox layout="pageDirection">  
+                        <f:selectItem itemLabel="AlternativesToAuditory" itemValue="AlternativesToAuditory" />  
+                        <f:selectItem itemLabel="AlternativesToText" itemValue="AlternativesToText" />  
+                        <f:selectItem itemLabel="AudioDescription" itemValue="AudioDescription" />  
+                        <f:selectItem itemLabel="GraphicAlternative" itemValue="GraphicAlternative" />  
+                        <f:selectItem itemLabel="HasText" itemValue="HasText" /> 
+                        <f:selectItem itemLabel="HasVisual" itemValue="HasVisual" /> 
+                    </p:selectManyCheckbox>  
+                    
+                    <h:outputText value="Daltônico:" />  
+                    <p:selectManyCheckbox layout="pageDirection">  
+                        <f:selectItem itemLabel="AvoidBlueYellow" itemValue="AvoidBlueYellow" />  
+                        <f:selectItem itemLabel="AvoidGreenYellow" itemValue="AvoidGreenYellow" />  
+                        <f:selectItem itemLabel="AvoidOrange" itemValue="AvoidOrange" />  
+                        <f:selectItem itemLabel="AvoidPurpleGray" itemValue="AvoidPurpleGray" />  
+                        <f:selectItem itemLabel="AvoidRed" itemValue="AvoidRed" /> 
+                        <f:selectItem itemLabel="AvoidRedBlack" itemValue="AvoidRedBlack" /> 
+                        <f:selectItem itemLabel="AvoidRedGreen" itemValue="AvoidRedGreen" />  
+                        <f:selectItem itemLabel="ColorAvoidDance" itemValue="ColorAvoidDance" /> 
+                        <f:selectItem itemLabel="UseMaximumContrastMonochrome" itemValue="AvoidRedBlack" /> 
+                    </p:selectManyCheckbox>  
+                    
+                    
+
+
+                </p:panelGrid>
+            </p:panelGrid> 
+        </h:form>
+    </h:body>
+</html>
+
